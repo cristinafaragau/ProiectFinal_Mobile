@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectFinal_Mobile.ListPage"
+             Title="ListPage">
+    <ContentPage.Content xmlns:local="clr-namespace:ProiectFinal_Mobile">
+        <StackLayout Margin="20">
+            <Editor Placeholder="Enter the description of the shopping list" Text="{Binding Name}" 
+                HeightRequest="50">
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save" Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+
+            <ListView x:Name="listView"
+                    Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Add/Choose breed" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
+            <Button Text="Delete Item" MaximumWidthRequest="300" Clicked="OnDeleteItemButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
